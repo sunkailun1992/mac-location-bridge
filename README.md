@@ -43,7 +43,7 @@ python3 scripts/test-trust-helper.py
 
 ## 开源协作
 
-外部贡献者可提交 issue 和 fork PR；由维护者或其授权 AI 审核，CI 通过后 squash 合并。维护者本人及使用同一管理账号的本机 AI 可以直接更新 `main`，不额外要求 PR 审批。规范入口为 [AGENTS.md](AGENTS.md)、[AI 编码规范](docs/ai-coding/README.md)、[贡献指南](CONTRIBUTING.md)和[维护者约定](MAINTAINERS.md)。
+外部贡献者可提交 issue 和 fork PR；由维护者或其授权 AI 审核，CI 通过后 squash 合并。维护者本人及使用同一管理账号的 AI 可以直接更新 `main`，不额外要求 PR 审批。规范入口为 [AGENTS.md](AGENTS.md)、[AI 编码规范](docs/ai-coding/README.md)、[贡献指南](CONTRIBUTING.md)和[维护者约定](MAINTAINERS.md)。
 
 ## 来源与许可证
 
