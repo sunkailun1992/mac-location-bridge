@@ -31,5 +31,5 @@
 - [x] Implement local identity generation, read-only compatibility report and CLI; validate generated SANs and file permissions without committing artifacts.
 - [x] Implement App target and reproducible app packaging; build on current Xcode and inspect bundle/signature.
 - [x] Snapshot exact relevant trust/network state. Run bounded leaf-trust hypothesis against actual daemon behavior; restore unsuccessful changes.
-- [x] Run service with synthetic fixtures, then real location requests only after TLS compatibility. Require a fresh system fix; initial comparison map passed, final packaged app/map check remains at release acceptance.
-- [ ] Review public tree for secrets/personal data, run tests, create public GitHub repository and push verified commit; record actual compatibility status.
+- [x] Run service with synthetic fixtures, then real location requests only after TLS compatibility. The installed app, fresh Core Location and Apple Maps current-location card were independently checked.
+- [x] Review public tree for secrets/personal data, run tests, create public GitHub repository and push verified commit; record actual compatibility status.
