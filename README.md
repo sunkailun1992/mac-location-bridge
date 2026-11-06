@@ -12,6 +12,7 @@
 
 ```bash
 swift test
+bash scripts/test-app-construction.sh
 python3 scripts/test-cli.py
 python3 scripts/test-tls.py
 python3 scripts/test-surge-integration.py

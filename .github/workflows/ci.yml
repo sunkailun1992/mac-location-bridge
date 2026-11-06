@@ -46,6 +46,8 @@ jobs:
           swift --version
       - name: Run Swift unit tests
         run: swift test
+      - name: Construct and lay out the native app without displaying it
+        run: bash scripts/test-app-construction.sh
       - name: Test CLI with temporary synthetic identities
         run: python3 scripts/test-cli.py
       - name: Test CONNECT and TLS with temporary synthetic requests

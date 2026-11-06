@@ -6,4 +6,6 @@
 
 维护者实机验收分阶段记录：系统/构建版本、证书校验、locationd TLS、实际请求解析、合成响应、新鲜 Core Location、地图交叉验证。新鲜读数需有效精度、接近本次探测时间；缓存位置和手动搜索地图不算成功。
 
+`bash scripts/test-app-construction.sh` 实际构造隐藏控制器和完整 AppKit 视图树并执行布局，用于捕捉运行期约束异常。它不展示窗口、不请求权限或调用 CLI；仍需维护者安装后验收可见界面。
+
 运行 `swift test`、`python3 scripts/test-cli.py`、`python3 scripts/check-public-tree.py --self-test` 与隐私扫描；打包运行 `bash scripts/build-app.sh`。未测试的兼容版本写未知，不借 CI runner 的系统版本宣称实机定位通过。

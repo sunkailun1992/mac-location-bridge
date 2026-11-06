@@ -40,5 +40,6 @@ let application = NSApplication.shared
 let applicationDelegate = ApplicationDelegate()
 application.delegate = applicationDelegate
 application.setActivationPolicy(.regular)
-application.run()
-withExtendedLifetime(applicationDelegate) {}
+withExtendedLifetime(applicationDelegate) {
+    application.run()
+}

@@ -114,9 +114,10 @@ final class MainWindowController: NSWindowController, CLLocationManagerDelegate,
             field.delegate = self
             field.widthAnchor.constraint(greaterThanOrEqualToConstant: 180).isActive = true
         }
-        latitudeField.widthAnchor.constraint(equalTo: longitudeField.widthAnchor).isActive = true
         let targetRow = row([NSTextField(labelWithString: "纬度"), latitudeField,
                              NSTextField(labelWithString: "经度"), longitudeField])
+        // Cross-view constraints require the shared hierarchy to exist first.
+        latitudeField.widthAnchor.constraint(equalTo: longitudeField.widthAnchor).isActive = true
         add(section("目标坐标 · 仅用于服务配置", [targetRow,
             note("坐标仅保留在本次 App 会话中；保存或启动服务不代表系统位置已改变。")]))
 
