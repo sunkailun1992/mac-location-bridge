@@ -8,7 +8,9 @@
 
 ## 构建
 
-准备 Xcode 或 Command Line Tools；App 可在 macOS 13+ 构建，P12 服务启动需要 macOS 15+，以使用内存导入，避免隐式写入用户钥匙串。
+准备 Xcode 或 Command Line Tools；App 的部署目标为 macOS 13+，P12 服务运行需要 macOS 15+，以使用内存导入，避免隐式写入用户钥匙串。部署目标声明不代表所有旧系统、SDK 和工具链组合都已构建验证。
+
+工具链必须满足固定 SwiftProtobuf 依赖的 Swift 6.1/6.2 manifest 与 SDK 要求；本项目 tools-version 5.9 只是包语法声明，不是完整依赖的最低构建版本保证。本轮已验证的 Xcode 组合见兼容矩阵。
 
 ```bash
 swift test
@@ -25,6 +27,8 @@ python3 scripts/test-trust-helper.py
 输出为 `dist/LocationBridge.app`，含 App、CLI 和信任实验 helper，使用 ad hoc 签名。当前没有 Developer ID 公证或自动更新承诺。
 
 ## 使用
+
+完整规则见[定位修改功能规范](docs/location-modification-spec.md)，逐步操作、换点、故障分诊和恢复见[操作手册](docs/operations.md)。这两份文档同时区分已实现、手动流程和未实现能力。
 
 1. 打开 App，输入目标的 WGS84 纬度、经度。程序不把目标写入源码或公开仓库。
 2. 显式生成本机独立身份；文件保存在仓库外，私钥和密码不会共享。

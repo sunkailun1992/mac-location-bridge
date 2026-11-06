@@ -1,5 +1,7 @@
 # Surge 定位接入
 
+完整网络约束见[功能规范](location-modification-spec.md#8-surge-接入和恢复)，标准启动、换点和结束流程见[操作手册](operations.md)。
+
 仅适用于已经运行的 Surge for Mac。脚本只增加一个本地 HTTP 代理与两条 `locationd + 精确域名` 规则，不替换全局出口、DNS、订阅或其他规则。
 
 先启动 LocationBridge 服务，再选择**当前生效的** profile 路径。state 必须是仓库外的新私有目录，每次实验单独建立。

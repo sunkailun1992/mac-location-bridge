@@ -1,5 +1,7 @@
 # 受限叶证书信任实验
 
+完整功能约束见[功能规范第 5 节](location-modification-spec.md#5-受限信任的安装检查与移除)，操作顺序见[操作手册](operations.md)。本页保留信任机制说明。
+
 本实验将本机唯一叶证书设为 `TrustAsRoot=2`，每个条目同时限定 SSL 服务端策略、精确主机名与当前 locationd 的指定签名要求。只有 `gs-loc.apple.com` 和 `gs-loc-cn.apple.com` 两条约束，`AllowedError=0`。
 
 这会在上述约束范围内放宽部分证书错误检查。0 不是 Apple 文档保证的 pinning 例外，也不只针对四个固定错误；其他未映射的可恢复校验错误也可能被覆盖。它不是全局信任根：helper 不给根证书增加信任，不改 System 域、SIP、Apple 二进制或证书绑定数据库。

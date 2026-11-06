@@ -2,6 +2,8 @@
 
 本项目使用 Codex。根目录 `AGENTS.md` 是入口；规则冲突以用户当次授权和该文件为准。下列规范从既有个人开源项目的工程实践抽取，并按 Swift/macOS 的风险重新编写，不复制业务配置或内部资料。
 
+任何定位功能修改先读 [定位修改功能规范](../location-modification-spec.md) 和 [操作手册](../operations.md)；它们是具体功能与操作契约，以下文档是编码和交付约束。
+
 | 文件 | 职责 |
 |---|---|
 | [AI_CODING_GUIDE.md](AI_CODING_GUIDE.md) | 分层、数据流、变更方式 |

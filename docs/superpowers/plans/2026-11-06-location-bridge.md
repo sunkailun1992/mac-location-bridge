@@ -6,7 +6,7 @@
 
 **Architecture:** Swift Package 将协议/服务、CLI、App 分开。每台设备生成自己的 TLS 身份。兼容检查与真实定位验收互不替代。
 
-**Tech Stack:** Swift 5.9+, macOS 13+, AppKit, CoreLocation, Security, SwiftProtobuf 1.38.1.
+**Tech Stack:** Package tools-version 5.9; SwiftProtobuf 1.38.1 requires its Swift 6.1/6.2 manifest-compatible toolchain. Verified with Xcode 27.2 / Swift 6.4.2. macOS 13+ deployment target, macOS 15+ P12 service, AppKit, CoreLocation, Security.
 
 **Spec:** `docs/superpowers/specs/2026-11-06-location-bridge-design.md`
 
