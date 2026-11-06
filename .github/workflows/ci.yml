@@ -1,0 +1,60 @@
+name: CI
+
+"on":
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  public-tree:
+    name: Public tree and secret guard
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Test scanner against synthetic leaks and safe examples
+        run: python3 scripts/check-public-tree.py --self-test
+      - name: Check public candidate files
+        run: python3 scripts/check-public-tree.py
+
+  macos:
+    name: Test and package (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, macos-15]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Record runner toolchain
+        run: |
+          sw_vers
+          xcodebuild -version
+          swift --version
+      - name: Run Swift unit tests
+        run: swift test
+      - name: Test CLI with temporary synthetic identities
+        run: python3 scripts/test-cli.py
+      - name: Test CONNECT and TLS with temporary synthetic requests
+        run: python3 scripts/test-tls.py
+      - name: Test scoped Surge integration with synthetic profiles
+        run: python3 scripts/test-surge-integration.py
+      - name: Build and verify app bundle outside public tree
+        run: bash scripts/build-app.sh "$RUNNER_TEMP/locationbridge-artifacts"
+      - name: Test bundled trust helper without system writes
+        env:
+          LOCATION_BRIDGE_CLI: ${{ runner.temp }}/locationbridge-artifacts/LocationBridge.app/Contents/MacOS/location-bridge
+        run: python3 scripts/test-trust-helper.py

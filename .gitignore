@@ -1,0 +1,15 @@
+.build/
+.swiftpm/
+.DS_Store
+dist/
+local/
+*.p12
+*.pfx
+*.key
+*.pem
+*.der
+*.log
+*.xcuserstate
+.remember/
+__pycache__/
+*.pyc
